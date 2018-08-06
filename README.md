@@ -29,7 +29,6 @@ $ ./annovar_db_download.sh
 ```bash
 $ convert2annovar.pl -format vcf4 gatk.vcf > HG00403.chr20.gatk.avinput
 ```
-
 ```bash
 NOTICE: Finished reading 3481 lines from VCF file
 NOTICE: A total of 3443 locus in VCF file passed QC threshold, representing 3105 SNPs (2069 transitions and 1036 transversions) and 338 indels/substitutions
@@ -44,11 +43,11 @@ $ perl annovar.pl -i HG00403.chr20.gatk.avinput -r hg38 -o HG00403.chr20.gatk
 ```
 * tab output
 ```bash
-$ table_annovar.pl HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -buildver hg38 -out HG00403.chr20.gatk -remove -protocol refGene,ensGene,cytoBand,genomicSuperDups,avsnp150,esp6500siv2_all,1000g2015aug_all,1000g2015aug_afr,1000g2015aug_amr,1000g2015aug_eur,1000g2015aug_eas,1000g2015aug_sas,nci60,cosmic85_coding,clinvar_20180603,gnomad_genome,exac03,intervar_20180118,dbnsfp31a_interpro -operation g,g,r,r,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f -otherinfo -nastring NA
+$ table_annovar.pl HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -buildver hg38 -out HG00403.chr20.gatk -remove -protocol refGene,ensGene,cytoBand,genomicSuperDups,gwasCatalog,avsnp150,esp6500siv2_all,1000g2015aug_all,1000g2015aug_afr,1000g2015aug_amr,1000g2015aug_eur,1000g2015aug_eas,1000g2015aug_sas,nci60,cosmic85_coding,clinvar_20180603,gnomad_genome,exac03,intervar_20180118,dbnsfp31a_interpro -operation g,g,r,r,r,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f -otherinfo -nastring NA
 ```
 * csv output
 ```bash
-$ table_annovar.pl HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -buildver hg38 -out HG00403.chr20.gatk -remove -protocol refGene,ensGene,cytoBand,genomicSuperDups,avsnp150,esp6500siv2_all,1000g2015aug_all,1000g2015aug_afr,1000g2015aug_amr,1000g2015aug_eur,1000g2015aug_eas,1000g2015aug_sas,nci60,cosmic85_coding,clinvar_20180603,gnomad_genome,exac03,intervar_20180118,dbnsfp31a_interpro, -operation g,g,r,r,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f -otherinfo -nastring . -csvout
+$ table_annovar.pl HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -buildver hg38 -out HG00403.chr20.gatk -remove -protocol refGene,ensGene,cytoBand,genomicSuperDups,gwasCatalog,avsnp150,esp6500siv2_all,1000g2015aug_all,1000g2015aug_afr,1000g2015aug_amr,1000g2015aug_eur,1000g2015aug_eas,1000g2015aug_sas,nci60,cosmic85_coding,clinvar_20180603,gnomad_genome,exac03,intervar_20180118,dbnsfp31a_interpro, -operation g,g,r,r,r,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f -otherinfo -nastring . -csvout
 ```
 
 ### Easy Run Annovar talbe function
@@ -63,6 +62,7 @@ $ perl annovar.pl -i demo_sample.avinput -r hg19 -o demo_sample
 * **Region-based (r)**
     * cytoBand
     * genomicSuperDups
+    * gwasCatalog
 
 * **Filter-based (f)**
     * avsnp150
@@ -119,9 +119,9 @@ NOTICE: Creating new threads for query line 2584 to 3443
 NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_cytoBand.txt ... Done with 1293 regions
 NOTICE: Finished region-based annotation on 861 genetic variants
 NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_cytoBand.txt ... Done with 1293 regions
-NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_cytoBand.txt ... Done with 1293 regions
-NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_cytoBand.txt ... Done with 1293 regions
 NOTICE: Finished region-based annotation on 861 genetic variants
+NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_cytoBand.txt ... Done with 1293 regions
+NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_cytoBand.txt ... Done with 1293 regions
 NOTICE: Finished region-based annotation on 860 genetic variants
 NOTICE: Finished region-based annotation on 861 genetic variants
 -----------------------------------------------------------------
@@ -137,10 +137,28 @@ NOTICE: Creating new threads for query line 2584 to 3443
 NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_genomicSuperDups.txt ... Done with 69894 regions
 NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_genomicSuperDups.txt ... Done with 69894 regions
 NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_genomicSuperDups.txt ... Done with 69894 regions
+NOTICE: Finished region-based annotation on 861 genetic variants
+NOTICE: Finished region-based annotation on 861 genetic variants
+NOTICE: Finished region-based annotation on 861 genetic variants
 NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_genomicSuperDups.txt ... Done with 69894 regions
 NOTICE: Finished region-based annotation on 860 genetic variants
+-----------------------------------------------------------------
+NOTICE: Processing operation=r protocol=gwasCatalog
+
+NOTICE: Running with system command <annotate_variation.pl -regionanno -dbtype gwasCatalog -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4>
+NOTICE: Output file is written to HG00403.chr20.gatk.hg38_gwasCatalog
+NOTICE: the queryfile contains 3443 lines
+NOTICE: Creating new threads for query line 1 to 861
+NOTICE: Creating new threads for query line 862 to 1722
+NOTICE: Creating new threads for query line 1723 to 2583
+NOTICE: Creating new threads for query line 2584 to 3443
+NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_gwasCatalog.txt ... Done with 84414 regions
+NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_gwasCatalog.txt ... Done with 84414 regions
 NOTICE: Finished region-based annotation on 861 genetic variants
 NOTICE: Finished region-based annotation on 861 genetic variants
+NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_gwasCatalog.txt ... Done with 84414 regions
+NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_gwasCatalog.txt ... Done with 84414 regions
+NOTICE: Finished region-based annotation on 860 genetic variants
 NOTICE: Finished region-based annotation on 861 genetic variants
 -----------------------------------------------------------------
 NOTICE: Processing operation=f protocol=avsnp150
@@ -156,13 +174,13 @@ NOTICE: Creating new threads for query line 2584 to 3443
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 777
-NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 753
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_avsnp150.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_avsnp150.txt...Done
-NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 766
 NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 789
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_avsnp150.txt...Done
+NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 766
+NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_avsnp150.txt...Done
+NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 753
+NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_avsnp150.txt...Done
+NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 777
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_avsnp150.txt...Done
 -----------------------------------------------------------------
 NOTICE: Processing operation=f protocol=esp6500siv2_all
@@ -179,13 +197,13 @@ NOTICE: Creating new threads for query line 2584 to 3443
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 683825 and the number of bins to be scanned is 19
-NOTICE: Database index loaded. Total number of bins is 683825 and the number of bins to be scanned is 9
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_esp6500siv2_all.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_esp6500siv2_all.txt...Done
 NOTICE: Database index loaded. Total number of bins is 683825 and the number of bins to be scanned is 1
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_esp6500siv2_all.txt...Done
 NOTICE: Database index loaded. Total number of bins is 683825 and the number of bins to be scanned is 6
+NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_esp6500siv2_all.txt...Done
+NOTICE: Database index loaded. Total number of bins is 683825 and the number of bins to be scanned is 19
+NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_esp6500siv2_all.txt...Done
+NOTICE: Database index loaded. Total number of bins is 683825 and the number of bins to be scanned is 9
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_esp6500siv2_all.txt...Done
 -----------------------------------------------------------------
 NOTICE: Processing operation=f protocol=1000g2015aug_all
@@ -203,11 +221,11 @@ NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 860 unique variants in 860 input lines
 NOTICE: Database index loaded. Total number of bins is 2821635 and the number of bins to be scanned is 498
 NOTICE: Database index loaded. Total number of bins is 2821635 and the number of bins to be scanned is 492
-NOTICE: Database index loaded. Total number of bins is 2821635 and the number of bins to be scanned is 516
 NOTICE: Database index loaded. Total number of bins is 2821635 and the number of bins to be scanned is 503
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_ALL.sites.2015_08.txt...Done
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_ALL.sites.2015_08.txt...Done
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_ALL.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2821635 and the number of bins to be scanned is 516
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_ALL.sites.2015_08.txt...Done
 -----------------------------------------------------------------
 NOTICE: Processing operation=f protocol=1000g2015aug_afr
@@ -225,8 +243,8 @@ NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 860 unique variants in 860 input lines
 NOTICE: Database index loaded. Total number of bins is 2817370 and the number of bins to be scanned is 491
 NOTICE: Database index loaded. Total number of bins is 2817370 and the number of bins to be scanned is 503
-NOTICE: Database index loaded. Total number of bins is 2817370 and the number of bins to be scanned is 516
 NOTICE: Database index loaded. Total number of bins is 2817370 and the number of bins to be scanned is 497
+NOTICE: Database index loaded. Total number of bins is 2817370 and the number of bins to be scanned is 516
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_AFR.sites.2015_08.txt...Done
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_AFR.sites.2015_08.txt...Done
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_AFR.sites.2015_08.txt...Done
@@ -245,12 +263,12 @@ NOTICE: Creating new threads for query line 2584 to 3443
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 2812567 and the number of bins to be scanned is 516
-NOTICE: Database index loaded. Total number of bins is 2812567 and the number of bins to be scanned is 490
 NOTICE: Database index loaded. Total number of bins is 2812567 and the number of bins to be scanned is 497
+NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_AMR.sites.2015_08.txt...Done
 NOTICE: Database index loaded. Total number of bins is 2812567 and the number of bins to be scanned is 503
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_AMR.sites.2015_08.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_AMR.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2812567 and the number of bins to be scanned is 490
+NOTICE: Database index loaded. Total number of bins is 2812567 and the number of bins to be scanned is 516
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_AMR.sites.2015_08.txt...Done
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_AMR.sites.2015_08.txt...Done
 -----------------------------------------------------------------
@@ -268,12 +286,12 @@ NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 860 unique variants in 860 input lines
 NOTICE: Database index loaded. Total number of bins is 2809469 and the number of bins to be scanned is 516
+NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_EUR.sites.2015_08.txt...Done
 NOTICE: Database index loaded. Total number of bins is 2809469 and the number of bins to be scanned is 498
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_EUR.sites.2015_08.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_EUR.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2809469 and the number of bins to be scanned is 503
 NOTICE: Database index loaded. Total number of bins is 2809469 and the number of bins to be scanned is 492
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_EUR.sites.2015_08.txt...Done
-NOTICE: Database index loaded. Total number of bins is 2809469 and the number of bins to be scanned is 503
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_EUR.sites.2015_08.txt...Done
 -----------------------------------------------------------------
 NOTICE: Processing operation=f protocol=1000g2015aug_eas
@@ -289,12 +307,12 @@ NOTICE: Creating new threads for query line 2584 to 3443
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 2810247 and the number of bins to be scanned is 491
 NOTICE: Database index loaded. Total number of bins is 2810247 and the number of bins to be scanned is 516
-NOTICE: Database index loaded. Total number of bins is 2810247 and the number of bins to be scanned is 497
 NOTICE: Database index loaded. Total number of bins is 2810247 and the number of bins to be scanned is 503
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_EAS.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2810247 and the number of bins to be scanned is 497
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_EAS.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2810247 and the number of bins to be scanned is 491
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_EAS.sites.2015_08.txt...Done
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_EAS.sites.2015_08.txt...Done
 -----------------------------------------------------------------
@@ -311,12 +329,12 @@ NOTICE: Creating new threads for query line 2584 to 3443
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 2813352 and the number of bins to be scanned is 496
 NOTICE: Database index loaded. Total number of bins is 2813352 and the number of bins to be scanned is 516
 NOTICE: Database index loaded. Total number of bins is 2813352 and the number of bins to be scanned is 491
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_SAS.sites.2015_08.txt...Done
-NOTICE: Database index loaded. Total number of bins is 2813352 and the number of bins to be scanned is 503
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_SAS.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2813352 and the number of bins to be scanned is 503
+NOTICE: Database index loaded. Total number of bins is 2813352 and the number of bins to be scanned is 496
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_SAS.sites.2015_08.txt...Done
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_SAS.sites.2015_08.txt...Done
 -----------------------------------------------------------------
@@ -334,11 +352,11 @@ NOTICE: Creating new threads for query line 2584 to 3443
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 81459 and the number of bins to be scanned is 14
+NOTICE: Database index loaded. Total number of bins is 81459 and the number of bins to be scanned is 24
+NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_nci60.txt...Done
 NOTICE: Database index loaded. Total number of bins is 81459 and the number of bins to be scanned is 1
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_nci60.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_nci60.txt...Done
-NOTICE: Database index loaded. Total number of bins is 81459 and the number of bins to be scanned is 24
+NOTICE: Database index loaded. Total number of bins is 81459 and the number of bins to be scanned is 14
 NOTICE: Database index loaded. Total number of bins is 81459 and the number of bins to be scanned is 13
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_nci60.txt...Done
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_nci60.txt...Done
@@ -375,14 +393,14 @@ NOTICE: Creating new threads for query line 1723 to 2583
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Creating new threads for query line 2584 to 3443
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 44007 and the number of bins to be scanned is 2
-NOTICE: Database index loaded. Total number of bins is 44007 and the number of bins to be scanned is 26
-NOTICE: Database index loaded. Total number of bins is 44007 and the number of bins to be scanned is 15
+NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Database index loaded. Total number of bins is 44007 and the number of bins to be scanned is 12
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_clinvar_20180603.txt...Done
+NOTICE: Database index loaded. Total number of bins is 44007 and the number of bins to be scanned is 2
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_clinvar_20180603.txt...Done
+NOTICE: Database index loaded. Total number of bins is 44007 and the number of bins to be scanned is 15
+NOTICE: Database index loaded. Total number of bins is 44007 and the number of bins to be scanned is 26
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_clinvar_20180603.txt...Done
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_clinvar_20180603.txt...Done
 -----------------------------------------------------------------
@@ -401,13 +419,13 @@ NOTICE: Creating new threads for query line 2584 to 3443
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 28084439 and the number of bins to be scanned is 766
-NOTICE: Database index loaded. Total number of bins is 28084439 and the number of bins to be scanned is 789
 NOTICE: Database index loaded. Total number of bins is 28084439 and the number of bins to be scanned is 753
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_gnomad_genome.txt...Done
+NOTICE: Database index loaded. Total number of bins is 28084439 and the number of bins to be scanned is 789
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_gnomad_genome.txt...Done
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_gnomad_genome.txt...Done
 NOTICE: Database index loaded. Total number of bins is 28084439 and the number of bins to be scanned is 776
+NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_gnomad_genome.txt...Done
+NOTICE: Database index loaded. Total number of bins is 28084439 and the number of bins to be scanned is 766
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_gnomad_genome.txt...Done
 -----------------------------------------------------------------
 NOTICE: Processing operation=f protocol=exac03
@@ -425,13 +443,13 @@ NOTICE: Creating new threads for query line 2584 to 3443
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 749044 and the number of bins to be scanned is 15
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_exac03.txt...Done
-NOTICE: Database index loaded. Total number of bins is 749044 and the number of bins to be scanned is 8
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_exac03.txt...Done
 NOTICE: Database index loaded. Total number of bins is 749044 and the number of bins to be scanned is 0
 NOTICE: Database index loaded. Total number of bins is 749044 and the number of bins to be scanned is 7
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_exac03.txt...Done
+NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_exac03.txt...Done
+NOTICE: Database index loaded. Total number of bins is 749044 and the number of bins to be scanned is 8
+NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_exac03.txt...Done
+NOTICE: Database index loaded. Total number of bins is 749044 and the number of bins to be scanned is 15
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_exac03.txt...Done
 -----------------------------------------------------------------
 NOTICE: Processing operation=f protocol=intervar_20180118
@@ -453,9 +471,9 @@ NOTICE: Database index loaded. Total number of bins is 535845 and the number of 
 NOTICE: Database index loaded. Total number of bins is 535845 and the number of bins to be scanned is 0
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_intervar_20180118.txt...Done
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_intervar_20180118.txt...Done
-NOTICE: Database index loaded. Total number of bins is 535845 and the number of bins to be scanned is 3
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_intervar_20180118.txt...Done
 NOTICE: Database index loaded. Total number of bins is 535845 and the number of bins to be scanned is 6
+NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_intervar_20180118.txt...Done
+NOTICE: Database index loaded. Total number of bins is 535845 and the number of bins to be scanned is 3
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_intervar_20180118.txt...Done
 -----------------------------------------------------------------
 NOTICE: Processing operation=f protocol=dbnsfp31a_interpro
@@ -473,13 +491,13 @@ NOTICE: Creating new threads for query line 2584 to 3443
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 861 unique variants in 861 input lines
 NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 275396 and the number of bins to be scanned is 2
 NOTICE: Database index loaded. Total number of bins is 275396 and the number of bins to be scanned is 0
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_dbnsfp31a_interpro.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_dbnsfp31a_interpro.txt...Done
+NOTICE: Database index loaded. Total number of bins is 275396 and the number of bins to be scanned is 2
 NOTICE: Database index loaded. Total number of bins is 275396 and the number of bins to be scanned is 2
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_dbnsfp31a_interpro.txt...Done
 NOTICE: Database index loaded. Total number of bins is 275396 and the number of bins to be scanned is 4
+NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_dbnsfp31a_interpro.txt...Done
 NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_dbnsfp31a_interpro.txt...Done
 -----------------------------------------------------------------
 NOTICE: Multianno output file is written to HG00403.chr20.gatk.hg38_multianno.txt
@@ -670,6 +688,14 @@ NOTICE: Finished downloading annotation files for hg19 build version, with files
 NOTICE: Web-based checking to see whether ANNOVAR new version is available ... Done
 NOTICE: Downloading annotation database http://www.openbioinformatics.org/annovar/download/hg38_dbnsfp31a_interpro.txt.gz ... OK
 NOTICE: Downloading annotation database http://www.openbioinformatics.org/annovar/download/hg38_dbnsfp31a_interpro.txt.idx.gz ... OK
+NOTICE: Uncompressing downloaded files
+NOTICE: Finished downloading annotation files for hg38 build version, with files saved at the 'humandb' directory
+NOTICE: Web-based checking to see whether ANNOVAR new version is available ... Done
+NOTICE: Downloading annotation database http://hgdownload.cse.ucsc.edu/goldenPath/hg19/database/gwasCatalog.txt.gz ... OK
+NOTICE: Uncompressing downloaded files
+NOTICE: Finished downloading annotation files for hg19 build version, with files saved at the 'humandb' directory
+NOTICE: Web-based checking to see whether ANNOVAR new version is available ... Done
+NOTICE: Downloading annotation database http://hgdownload.cse.ucsc.edu/goldenPath/hg38/database/gwasCatalog.txt.gz ... OK
 NOTICE: Uncompressing downloaded files
 NOTICE: Finished downloading annotation files for hg38 build version, with files saved at the 'humandb' directory
 ```

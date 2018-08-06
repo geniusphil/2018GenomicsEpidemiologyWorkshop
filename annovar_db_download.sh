@@ -84,3 +84,7 @@ annotate_variation.pl -buildver hg38 -downdb -webfrom annovar intervar_20180118 
 # whole-exome SIFT, PolyPhen2 HDIV, PolyPhen2 HVAR, LRT, MutationTaster, MutationAssessor, FATHMM, MetaSVM, MetaLR, VEST, CADD, GERP++, DANN, fitCons, PhyloP and SiPhy scores from dbNSFP (protein domain for variants)
 annotate_variation.pl -buildver hg19 -downdb -webfrom annovar dbnsfp31a_interpro $DB_PATH
 annotate_variation.pl -buildver hg38 -downdb -webfrom annovar dbnsfp31a_interpro $DB_PATH
+
+# gwasCatalog
+annotate_variation.pl -buildver hg19 -downdb -webfrom annovar gwasCatalog $DB_PATH
+annotate_variation.pl -buildver hg38 -downdb -webfrom annovar gwasCatalog $DB_PATH
