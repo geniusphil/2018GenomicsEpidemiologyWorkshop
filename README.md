@@ -1,4 +1,4 @@
-# 2018 Genomic Epidemiology Workshop
+# 2018 Genomics Epidemiology Workshop
 
 ### NGS Variant Annotation: Hands-on session
 ---
